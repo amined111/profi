@@ -1,15 +1,6 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new Discord.Client();
-const settings = require('./settings.json')
-const fs = require("fs"); 
-const moment = require("moment");  
-const dateFormat = require('dateformat'); 
-const pretty = require('pretty-ms');
-
-client.on('ready', () => {
-  console.log(`Admin Bot Is Enabled`);
-});
-
+const prefix = "-";
 
 client.on('message', omar => {
 if(omar.content.split(' ')[0] == settings.prefix + 'rac') {  // delete all channels
