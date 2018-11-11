@@ -2,8 +2,13 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = "-";
 
+client.on('ready', () => {
+  console.log(`Admin Bot Is Enabled`);
+});
+
+
 client.on('message', omar => {
-if(omar.content.split(' ')[0] == settings.prefix + 'rac') {  // delete all channels
+if(omar.content.split(' ')[0] == prefix + 'rac') {  // delete all channels
 if (!omar.channel.guild) return;
 if(!omar.guild.member(omar.author).hasPermission("MANAGE_CHANNELS")) return omar.reply("**You Don't Have ` MANAGE_CHANNELS ` Permission**");
 if(!omar.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return omar.reply("**I Don't Have ` MANAGE_CHANNELS ` Permission**");
@@ -11,7 +16,7 @@ omar.guild.channels.forEach(m => {
 m.delete();
 });// omar jedol / Codes
 }// omar jedol / Codes
-if(omar.content.split(' ')[0] == settings.prefix + 'rar') { // delete all roles
+if(omar.content.split(' ')[0] == prefix + 'rar') { // delete all roles
 if (!omar.channel.guild) return;
 if(!omar.guild.member(omar.author).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**You Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
 if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**I Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
@@ -22,7 +27,7 @@ omar.reply("`تم حذف جميع الرتب بنجاح`")
 }// omar jedol / Codes
 });
 client.on("message", (message) => {
-if (message.content.startsWith( settings.prefix +"at")) {
+if (message.content.startsWith( prefix +"at")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel(args.join(' '), 'text');
@@ -31,7 +36,7 @@ message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
 }
 });
 client.on("message", (message) => {
-if (message.content.startsWith( settings.prefix +"av")) {
+if (message.content.startsWith( prefix +"av")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel(args.join(' '), 'voice');
@@ -40,7 +45,7 @@ if (message.content.startsWith( settings.prefix +"av")) {
 }
 });
 client.on('message', message => {
-       if(message.content === settings.prefix + "cc") {
+       if(message.content === prefix + "cc") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
 
    if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' **__ليس لديك صلاحيات__**');
@@ -51,7 +56,7 @@ client.on('message', message => {
                   message.reply("**__تم تقفيل الشات__ :white_check_mark: **")
               });
                 }
-    if(message.content === settings.prefix + "oc") {
+    if(message.content === prefix + "oc") {
                         if(!message.channel.guild) return message.reply('** This command only for servers**');
 
    if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('**__ليس لديك صلاحيات__**');
@@ -66,10 +71,10 @@ client.on('message', message => {
 });
 client.on('message', message => {
   if (message.author.x5bz) return;
-  if (!message.content.startsWith(settings.prefix)) return;
+  if (!message.content.startsWith(prefix)) return;
 
   let command = message.content.split(" ")[0];
-  command = command.slice(settings.prefix.length);
+  command = command.slice(prefix.length);
 
   let args = message.content.split(" ").slice(1);
 
@@ -109,9 +114,9 @@ client.on("message", message => {
 	var args = message.content.split(' ').slice(1); 
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
-	if( !msg.startsWith( settings.prefix + 'role' ) ) return;
+	if( !msg.startsWith( prefix + 'role' ) ) return;
 	if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__ليس لديك صلاحيات__**');
-	if( msg.toLowerCase().startsWith( settings.prefix + 'roleremove' ) ){
+	if( msg.toLowerCase().startsWith( prefix + 'roleremove' ) ){
 		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
 		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
@@ -154,10 +159,10 @@ client.on("message", message => {
 
 client.on('message', message => {
   if (message.author.x5bz) return;
-  if (!message.content.startsWith(settings.prefix)) return;
+  if (!message.content.startsWith(prefix)) return;
 
   let command = message.content.split(" ")[0];
-  command = command.slice(settings.prefix.length);
+  command = command.slice(prefix.length);
 
   let args = message.content.split(" ").slice(1);
 
@@ -196,9 +201,9 @@ client.on('message', async message =>{
   if (message.author.boss) return;
 	
 
-if (!message.content.startsWith(settings.prefix)) return;
+if (!message.content.startsWith(prefix)) return;
 	let command = message.content.split(" ")[0];
-	 command = command.slice(settings.prefix.length);
+	 command = command.slice(prefix.length);
 	let args = message.content.split(" ").slice(1);
 	if (command == "smu") {
 		if (!message.channel.guild) return;
