@@ -11,4 +11,8 @@ var channel =member.guild.channels.find('name', 'chat')
 if (!channel) return;
 channel.send({embed : embed});
 });
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","BOSS"));
+    });
+
 client.login(process.env.BOT_TOKEN);
