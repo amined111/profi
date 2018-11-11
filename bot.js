@@ -425,8 +425,6 @@ client.on('message', message => {
      },86400000);
      
   });
-<@505102973152526366>
-
     client.on('message', message => { //  by [ <@480407581085532180> ]
 
     if(message.content.startsWith(prefix + 'move all')) {
