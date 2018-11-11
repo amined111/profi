@@ -70,7 +70,7 @@ message.author.send(`**مدة الرابط : يـوم
 
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + 'ce')) {
+    if (message.content.startsWith("مسح")) {
       if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ماعندك هذا البرمشن[*MANAGE_MESSAGES*] `).catch(console.error);
   message.delete()
   if(!message.channel.guild) return;
