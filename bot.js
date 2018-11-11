@@ -50,7 +50,7 @@ msg.delete();
 });
 
   client.on('message', message => {
-    if (message.content.startsWith("$Link")) {
+    if (message.content.startsWith("رابط")) {
 
   message.channel.createInvite({
         thing: true,
