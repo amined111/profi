@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var prefix = "!"
+
 client.on('guildMemberAdd', member => {
     var embed = new Discord.RichEmbed()
     .setThumbnail(member.user.avatarURL)
@@ -458,6 +458,7 @@ client.on('message',async message => {
 });
 
 client.on('message', message => {
+    var prefix = "!"
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
  
