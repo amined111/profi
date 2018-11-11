@@ -427,7 +427,7 @@ client.on('message', message => {
   });
 client.on('message', message => {
   if (message.author.codes) return;
-  if (!message.content.startsWith(prefix)) return;
+  if (!message.content.startsWith(-)) return;
 
   var command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
