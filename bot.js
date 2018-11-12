@@ -10,7 +10,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed()  
       .setColor("#000000") 
       .setDescription(`**
-:radio_button: Mars Bot Help :
+:radio_button: Stylight Bot Help :
 
 
 <~>~<~>~<~>~<~>~<~>~<~>
@@ -117,7 +117,7 @@ $rac
 $rar
 حذف جميع الرتب :name_badge: 
 
-==> Created By Kaser#1118
+==> Created By A.#2001
 **`)
    message.channel.sendEmbed(embed)
     
@@ -168,7 +168,7 @@ client.on("message", message => {
 
 جميع هذه الخصائص تكون متوفرة في النسخة المدفوعة من الاي
 للحصول على النسخة المدفوعة يرجى التواصل مع
-Kaser#1118 / <@506034854043975681>
+A.#2001 / <@506034854043975681>
 `)
    message.channel.sendEmbed(embed)
     
