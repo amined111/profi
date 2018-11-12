@@ -450,5 +450,38 @@ client.on('message', msg => {
 }
 });
 
+client.on('ready', () => {
+  console.log(`Public Bot Is Enabled`);
+});
+
+client.on('ready', function(){	
+    var ms = 40000 ;	
+    var setGame = [`Type $help`,`Type $inv`,`Users ${client.users.size} | Guilds ${client.guilds.size}`];	
+    var i = -1;	
+    var j = 0;	
+    setInterval(function (){	
+        if( i == -1 ){	
+j = 1;	
+       }	
+        if( i == (setGame.length)-1 ){	
+            j = -1;	
+      }	
+       i = i+j;	
+        client.user.setGame(setGame[i],`http://www.youtube.com/gg`);	
+}, ms);	
+	
+});
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'myperms')) {
+         if(!message.channel.guild) return;
+         var perms = JSON.stringify(message.channel.permissionsFor(message.author).serialize(), null, 4);
+         var zPeRms = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setTitle(':tools: Permissions')
+         .addField('Your Permissions:',perms)
+                  message.channel.send({embed:zPeRms});
+
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
