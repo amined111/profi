@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var prefix = "$";
+var prefix = "#";
 client.on('message', message => { // Leaked by [ @Out Our server ]
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'bc')) {
@@ -50,7 +50,7 @@ msg.delete();
 });
 
   client.on('message', message => {
-    if (message.content.startsWith("$Link")) {
+    if (message.content.startsWith("#Link")) {
 
   message.channel.createInvite({
         thing: true,
@@ -68,44 +68,21 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
-client.on('guildMemberAdd', member => {
-    var embed = new Discord.RichEmbed()
-    .setThumbnail(member.user.avatarURL)
-  .addField("***شكرا الانضمامك الينا***" ,member.user.username )
-    .setDescription('***بكل حب واحترام وشوق نستقبلك ونتمنى لك قضآء أجمل اللحظات ولآوقات معنا***')
-    .setColor('RANDOM')
-    .setImage('http://www.imgion.com/images/01/Welcome-buddy.jpg')
-var channel =member.guild.channels.find('name', 'chat')
-if (!channel) return;
-channel.send({embed : embed});
-});
 
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith($)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice($.length);
-  let args = msg.content.split(" ").slice(1);
- 
-    if(command === "clear") {
-        const emoji = client.emojis.find("name", "wastebasket")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
+client.on('message', function(message) {
+    if (message.content == "#clear") {
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.fetchMessages()
+               .then(function(list){
+                    message.channel.bulkDelete(list);
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+        }
     }
-}
+
 });
 
   client.on('message', message => {
-      if(message.content.startsWith ("$marry")) {
+      if(message.content.startsWith ("#marry")) {
       if(!message.channel.guild) return message.reply('** This command only for servers **')
       var proposed = message.mentions.members.first()
      
@@ -134,7 +111,7 @@ message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
 });
 
 client.on('message',  (message) => {
-        if(message.content.startsWith('$kf')) {
+        if(message.content.startsWith('#kf')) {
   let user = message.mentions.users.first();
   if (!user) {
 
@@ -165,7 +142,7 @@ client.on('message',  (message) => {
 
 client.on('message', message => {
 
-    if (message.content === "$mc") {
+    if (message.content === "#mc") {
                         if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
@@ -176,7 +153,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
                message.reply("تم تقفيل الشات ? ")
            });
              }
-if (message.content === "$umc") {
+if (message.content === "#umc") {
     if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
@@ -194,7 +171,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 client.on('message', message => {
-    if (message.content.startsWith("$hacked")) {
+    if (message.content.startsWith("#hacked")) {
       if (message.author.bot) return
            message.delete();
              let args = message.content.split(' ').slice(1);
@@ -310,7 +287,7 @@ client.on('message', message =>{
 
 client.on('message', message =>{
     let args = message.content.split(' ');
-    let prefix = '$'; //تقدر تغير البرفكس
+    let prefix = '#'; //تقدر تغير البرفكس
     
     if(args[0] === `${prefix}avatar`){
         let mentions = message.mentions.members.first()
@@ -341,7 +318,7 @@ client.on('message', message => {
 });
 
 client.on("message", (message) => {
-if (message.content.startsWith("$ct")) {
+if (message.content.startsWith("#ct")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel(args.join(' '), 'text');
@@ -350,7 +327,7 @@ message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
 }
 });
 client.on("message", (message) => {
-if (message.content.startsWith("$cv")) {
+if (message.content.startsWith("#cv")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel(args.join(' '), 'voice');
@@ -381,7 +358,7 @@ client.on('message',async message => {
   
   
 client.on('message', message => {
-    var prefix = "$";
+    var prefix = "#";
 if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
@@ -442,7 +419,7 @@ message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! 
 
 
 client.on('message', message => {
-const prefix = "$";
+const prefix = "#";
   if (message.author.kick) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -598,7 +575,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 
 
   client.on('message', message => {
-    if (message.content === "$rooms") {
+    if (message.content === "#rooms") {
                       if (!message.guild) return;
 
         var channels = message.guild.channels.map(channels => `${channels.name}, `).join(' ')
@@ -614,7 +591,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 
 
 client.on('message', message => {
-    if (message.content === "$roles") {
+    if (message.content === "#roles") {
         var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
         const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -623,7 +600,7 @@ client.on('message', message => {
     }
 });
 client.on('message' , message => {
-  var prefix = "$";
+  var prefix = "#";
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "ping")) {
  message.channel.send('Pong...').then((msg) => {
@@ -652,7 +629,7 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('
 
  
 client.on('message', message => {
-    const prefix = '$'
+    const prefix = '#'
 var args = message.content.split(" ").slice(1);    
 if(message.content.startsWith(prefix + 'id')) {
 var year = message.author.createdAt.getFullYear()
@@ -697,7 +674,7 @@ message.channel.send({embed});
 
 client.on("message", (message) => {
     /// ALPHA CODES
-   if (message.content.startsWith("$new")) {     /// ALPHA CODES
+   if (message.content.startsWith("#new")) {     /// ALPHA CODES
         const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`لازم تسوي رتبة اسمها \`Support Team\` وتنطي البوت ادمنيتر حتا يقدر يسوي الرومات ويعدل برمشنات`);
         if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
@@ -728,7 +705,7 @@ client.on("message", (message) => {
     }
  
  
-  if (message.content.startsWith("$close")) {
+  if (message.content.startsWith("#close")) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
        message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب $confirm`)
@@ -759,47 +736,47 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help `,"http://twitch.tv/amine")
+client.user.setGame(`#help.`,"http://twitch.tv/aminn")
 client.user.setStatus("dnd")
 });
  
  
  
 client.on('message' , message => {
-if(message.content === '$help') {
+if(message.content === '#help') {
   var EsTeKnAN = new Discord.RichEmbed()
   .setColor('RANDOM')
 message.author.send(`
 ***__وصف عن البوت__***
 **
 ─════════════ {✯اوامر البوت✯} ════════════─
-❧ $bc ➺ برودكاست ب امبيد وبدون
-❧ $Link ➺ رابط انفايت للسيرفر
-❧ $clear ➺ مسح الشات
-❧ $server ➺ لعرض معلومات السيرفر
-❧ $marry ➺ لعبة الزواج
-❧ $kf ➺ لعبة كف
-❧ $mc ➺ قفل الشات
-❧ $umc ➺ فتح الشات
-❧ $hacked ➺ لعبة التهكير
-❧ $apply ➺ تقديم / لازم في روم اسمه التقديمات
-❧ $report ➺ تبليغ / لازم في روم اسمه repoerts
-❧ $avatar ➺ عرض صورتك او شخص تمنشنه
-❧ $bans ➺ يقولك عدد الاشخاص المبندين من السيرفر
-❧ $ct ➺ انشاء روم كتابي
-❧ $cv ➺ انشاء روم صوتي
-❧ $setVoice ➺ يسويلك روم ويقولك عدد الاشخاص في الرومات الصوتية
-❧ $move ➺ سحب عضو للروم الصوتي
-❧ $ban ➺ تبنيد عضو من السيرفر
-❧ $kick ➺ طرد عضو من السيرفر
-❧ $mute ➺ اعطاء ميوت كتابي
-❧ $unmute ➺ فك الميوت الكتابي
-❧ $rooms ➺ لعرض الرومات الموجودة في السيرفر
-❧ $roles ➺ لعرض الرتب الموجودة في السيرفر
-❧ $say ➺ البوت يكرر كلام انته تحدده
-❧ $id ➺ لعرض معلوماتك
+❧ #bc ➺ برودكاست ب امبيد وبدون
+❧ #Link ➺ رابط انفايت للسيرفر
+❧ #clear ➺ مسح الشات
+❧ #server ➺ لعرض معلومات السيرفر
+❧ #marry ➺ لعبة الزواج
+❧ #kf ➺ لعبة كف
+❧ #mc ➺ قفل الشات
+❧ #umc ➺ فتح الشات
+❧ #hacked ➺ لعبة التهكير
+❧ #apply ➺ تقديم / لازم في روم اسمه التقديمات
+❧ #report ➺ تبليغ / لازم في روم اسمه repoerts
+❧ #avatar ➺ عرض صورتك او شخص تمنشنه
+❧ #bans ➺ يقولك عدد الاشخاص المبندين من السيرفر
+❧ #ct ➺ انشاء روم كتابي
+❧ #cv ➺ انشاء روم صوتي
+❧ #setVoice ➺ يسويلك روم ويقولك عدد الاشخاص في الرومات الصوتية
+❧ #move ➺ سحب عضو للروم الصوتي
+❧ #ban ➺ تبنيد عضو من السيرفر
+❧ #kick ➺ طرد عضو من السيرفر
+❧ #mute ➺ اعطاء ميوت كتابي
+❧ #unmute ➺ فك الميوت الكتابي
+❧ #rooms ➺ لعرض الرومات الموجودة في السيرفر
+❧ #roles ➺ لعرض الرتب الموجودة في السيرفر
+❧ #say ➺ البوت يكرر كلام انته تحدده
+❧ #id ➺ لعرض معلوماتك
 ❧ $new ➺ لانشاء تذكرة
-─════════════ {✯ By ♛ NovritschPro#6808 ✯} ════════════─
+─════════════ {✯ By A.#2001 ✯} ════════════─
 **
 `);
 }
