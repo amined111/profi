@@ -310,7 +310,7 @@ client.on('message', message =>{
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("$bans")) {
+    if (message.content.startsWith("#bans")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
   .catch(console.error);
@@ -736,7 +736,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`#help.`,"http://twitch.tv/aminn")
+client.user.setGame(`Sylight|#help .`,"http://twitch.tv/aminn")
 client.user.setStatus("dnd")
 });
  
