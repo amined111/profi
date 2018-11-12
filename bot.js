@@ -450,7 +450,7 @@ client.on('message', msg => {
 }
 });
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("chat","welcome");
+let welcomer = member.guild.channels.find("name","chat");
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -465,7 +465,7 @@ let welcomer = member.guild.channels.find("chat","welcome");
                
  
       }
-      });
+});
 
 client.on('ready', () => {
   console.log(`Public Bot Is Enabled`);
