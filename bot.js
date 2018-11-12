@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+cconst Discord = require("discord.js");
 const client = new Discord.Client();
 var prefix = "$";
 client.on('message', message => { // Leaked by [ @Out Our server ]
@@ -50,7 +50,7 @@ msg.delete();
 });
 
   client.on('message', message => {
-    if (message.content.startsWith("رابط")) {
+    if (message.content.startsWith("$Link")) {
 
   message.channel.createInvite({
         thing: true,
@@ -69,7 +69,17 @@ message.author.send(`**مدة الرابط : يـوم
 });
 
 
+client.on('message', function(message) {
+    if (message.content == "#clear") {
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.fetchMessages()
+               .then(function(list){
+                    message.channel.bulkDelete(list);
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+        }
+    }
 
+});
 
   client.on('message', message => {
       if(message.content.startsWith ("$marry")) {
@@ -128,7 +138,6 @@ client.on('message',  (message) => {
   })
         }  
 });
-
 
 
 client.on('message', message => {
