@@ -1,38 +1,40 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+var prefix = "-";
 
-
-client.on('ready', () => {
-  console.log(`Hixxx online`);
-
-});
-//Hixx
 client.on('message', message => {
-if (message.content.split(' ')[0] == '-m')
- message.guild.members.forEach( member => {
-         if (!message.member.hasPermission("CONNECT"))  return;
-member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
-                                                            message.delete();
-});
-});
-
-//جميع الحقوق محفوظه لهيكس وخبز
-client.on("message", message => {
-    var prefix = "-";
- 
-            var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "m")) {
-                         if (!message.member.hasPermission("CONNECT"))  return;
-                            let embed4 = new Discord.RichEmbed()
-             .setDescription("**:white_check_mark: | جاري ارسال البرودكاست**")
-           .addField("مرسل البرودكاست" , message.author)
-          .addField("نص البرودكاست" ,args.join("  "))
-                            .addField("عدد الاعضاء المرسل لهم :busts_in_silhouette:" ,` **[${message.guild.memberCount}]**`,true)
-                                                            .setColor("#008000")
-                                message.channel.sendEmbed(embed4);
-                                                      message.delete();
-                            
-                          }
+    if (message.author.id === client.user.id) return;
+    if (message.guild) {
+   let embed = new Discord.RichEmbed()
+    let args = message.content.split(' ').slice(1).join(' ');
+if(message.content.split(' ')[0] == prefix + 'bc') {
+    if (!args[1]) {
+message.channel.send("**.bc <message>**");
+return;
+}
+        message.guild.members.forEach(m => {
+   if(!message.member.hasPermission('ADMINISTRATOR')) return;
+            var bc = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .addField('** الـسيرفر**', `${message.guild.name}`,true)
+            .addField(' **الـمرسل **', `${message.author.username}#${message.author.discriminator}`,true)
+            .addField(' **الرسالة** ', args)
+            .setThumbnail(message.guild.iconURL)
+            .setColor('RANDOM')
+            m.send(`${m}`,{embed: bc});
+        });
+        const AziRo = new Discord.RichEmbed()
+        .setAuthor(message.author.username, message.author.avatarURL)   
+        .setTitle('✔️ | جاري ارسال رسالتك ') 
+        .addBlankField(true)
+        .addField('👥 | عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)        
+        .addField('📋| الرسالة ', args)
+        .setColor('RANDOM')  
+        message.channel.sendEmbed(AziRo);          
+    }
+    } else {
+        return;
+    }
 });
 
  
