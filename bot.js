@@ -460,8 +460,8 @@ if (message.content.startsWith(prefix + 'setstream')) {
 
 client.on('ready',async () => {
 console.log("Starting..");
-let g = client.guilds.get("497527465787392016");
-let c = g.channels.get("497582850984509441");
+let g = client.guilds.get("505075875771842571");
+let c = g.channels.get("515216289090895873");
 if(c.type === 'voice') {
 c.join();
 setInterval(() => {
